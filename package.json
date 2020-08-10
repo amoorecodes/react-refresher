@@ -1,0 +1,28 @@
+{
+  "name": "react-refresher",
+  "version": "0.0.1",
+  "description": "simple refresher for react chops",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier \"src/**/*.{js,html}\" --write",
+    "dev": "parcel src/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unfaceit/react-refresher.git"
+  },
+  "author": "Arthur Ryabtsev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/unfaceit/react-refresher/issues"
+  },
+  "homepage": "https://github.com/unfaceit/react-refresher#readme",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4"
+  },
+  "dependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  }
+}
