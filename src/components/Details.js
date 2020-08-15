@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import pet from "@frontendmasters/pet";
+import Carousel from "./Carousel";
 
 class Details extends Component {
   constructor(props) {
@@ -12,7 +13,6 @@ class Details extends Component {
 
   async componentDidMount() {
     await pet.animal(this.props.id).then(({ animal }) => {
-      console.log("we are in await call");
       this.setState({
         name: animal.name,
         animal: animal.type,
@@ -27,12 +27,13 @@ class Details extends Component {
 
   render() {
     if (this.state.loading) {
-      return <h>Loading...</h>;
+      return <h1>Loading...</h1>;
     }
 
-    const { animal, breed, location, description, name } = this.state;
+    const { animal, breed, location, description, name, media } = this.state;
     return (
       <div className="details">
+        <Carousel media={media} />
         <div>
           <h1>{name}</h1>
           <h2>{`${animal} - ${breed} - ${location}`}</h2>
