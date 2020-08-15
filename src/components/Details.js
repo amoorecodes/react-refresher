@@ -12,25 +12,22 @@ class Details extends Component {
 
   async componentDidMount() {
     await pet.animal(this.props.id).then(({ animal }) => {
+      console.log("we are in await call");
       this.setState({
         name: animal.name,
         animal: animal.type,
-        breed: animal.breed.primary,
+        breed: animal.breeds.primary,
         location: `${animal.contact.address.city}, ${animal.contact.address.state}`,
         media: animal.photos,
         loading: false,
         description: animal.description,
       });
     }, console.error);
-
-    console.log("there is no state? :", this.state);
   }
 
   render() {
-    console.log("state", this.state);
-
     if (this.state.loading) {
-      <h>Loading...</h>;
+      return <h>Loading...</h>;
     }
 
     const { animal, breed, location, description, name } = this.state;
@@ -39,7 +36,7 @@ class Details extends Component {
         <div>
           <h1>{name}</h1>
           <h2>{`${animal} - ${breed} - ${location}`}</h2>
-          <button>Adopt ${name}</button>
+          <button>Adopt {name}</button>
           <p>${description}</p>
         </div>
       </div>
