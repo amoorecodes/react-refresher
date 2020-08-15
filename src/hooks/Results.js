@@ -1,10 +1,12 @@
 import React from "react";
 import Pet from "./Pet";
 
-export default function Results({ pets }) {
+const Results = ({ pets }) => {
   return (
     <div className="search">
-      {pets.length ? (
+      {!pets.length ? (
+        <p>No Pets Found</p>
+      ) : (
         pets.map((pet) => (
           <Pet
             animal={pet.type}
@@ -12,13 +14,13 @@ export default function Results({ pets }) {
             name={pet.name}
             breed={pet.breed}
             media={pet.photos}
-            location={`${pet.conact.address.city}, ${pet.contact.address.state} `}
+            location={`${pet.contact.address.city}, ${pet.contact.address.state} `}
             id={pet.id}
           />
         ))
-      ) : (
-        <p>No Pets Found</p>
       )}
     </div>
   );
-}
+};
+
+export default Results;
