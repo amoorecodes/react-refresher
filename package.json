@@ -50,7 +50,9 @@
     "lodash.flatten": "^4.4.0",
     "moment": "^2.27.0",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "react-redux": "^7.2.1",
+    "redux": "^4.0.5"
   },
   "browserslist": [
     "last 2 Chrome versions"
