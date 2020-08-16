@@ -4,7 +4,7 @@ import { renderToString, renderToNodeStream } from "react-dom/server";
 import { ServerLocation } from "@reach/router";
 import fs from "fs";
 import App from "../src/App";
-import { render } from "react-dom";
+// import { render } from "react-dom";
 
 const PORT = process.env.port || 3000;
 const html = fs.readFileSync("dist/index.html").toString();
