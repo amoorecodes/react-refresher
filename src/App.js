@@ -1,6 +1,5 @@
 import React, { useState, lazy, Suspense } from "react";
-import { render } from "react-dom";
-import { Router, Link } from "@reach/router";
+import { Router } from "@reach/router";
 import SearchParams from "./hooks/SearchParams";
 import ThemeContext from "./ThemeContext";
 import NavBar from "./hooks/NavBar";
@@ -26,4 +25,4 @@ const App = () => {
   );
 };
 
-render(<App />, document.getElementById("root"));
+export default App;

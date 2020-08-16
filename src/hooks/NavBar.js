@@ -10,7 +10,7 @@ const spin = keyframes`
 `;
 
 const NavBar = () => {
-  const [padding, setPadding] = useState(15);
+  const [padding, setPadding] = useState(15); //eslint-disable-line
   return (
     <header
       css={css`
