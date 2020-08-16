@@ -2,11 +2,13 @@ import React, { Component } from "react";
 import pet from "@frontendmasters/pet";
 import Carousel from "./Carousel";
 import ErrorBoundary from "./ErrorBoundary";
-import ThemeContext from "../ThemeContext";
+// import ThemeContext from "../ThemeContext";
 import { navigate } from "@reach/router";
 import Modal from "../hooks/Modal";
 // import flatten from "lodash.flatten";
 // import moment from "moment";
+import { connect } from "react-redux";
+import changeTheme from "../actionCreators/changeTheme";
 
 class Details extends Component {
   constructor(props) {
@@ -61,16 +63,16 @@ class Details extends Component {
         <div>
           <h1>{name}</h1>
           <h2>{`${animal} - ${breed} - ${location}`}</h2>
-          <ThemeContext.Consumer>
-            {(themeHook) => (
-              <button
-                onClick={this.toggleModal}
-                style={{ backgroundColor: themeHook[0] }}
-              >
-                Adopt {name}
-              </button>
-            )}
-          </ThemeContext.Consumer>
+          {/* <ThemeContext.Consumer> */}
+          {/* {(themeHook) => ( */}
+          <button
+            onClick={this.toggleModal}
+            style={{ backgroundColor: this.props.theme }}
+          >
+            Adopt {name}
+          </button>
+          {/* )} */}
+          {/* </ThemeContext.Consumer> */}
           <p>{description}</p>
           {showModal ? (
             <Modal>
@@ -88,10 +90,14 @@ class Details extends Component {
     );
   }
 }
+
+const mapStateToProps = ({ theme }) => ({ theme });
+const WrappedDetails = connect(mapStateToProps)(Details);
+
 export default function DetailsErrorBoundary(props) {
   return (
     <ErrorBoundary>
-      <Details {...props} />
+      <WrappedDetails {...props} />
     </ErrorBoundary>
   );
 }
