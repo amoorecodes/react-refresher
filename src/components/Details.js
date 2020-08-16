@@ -5,6 +5,8 @@ import ErrorBoundary from "./ErrorBoundary";
 import ThemeContext from "../ThemeContext";
 import { navigate } from "@reach/router";
 import Modal from "../hooks/Modal";
+import flatten from "lodash.flatten";
+import moment from "moment";
 
 class Details extends Component {
   constructor(props) {
