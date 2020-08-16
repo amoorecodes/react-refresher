@@ -69,7 +69,7 @@ class Details extends Component {
               </button>
             )}
           </ThemeContext.Consumer>
-          <p>${description}</p>
+          <p>{description}</p>
           {showModal ? (
             <Modal>
               <div>

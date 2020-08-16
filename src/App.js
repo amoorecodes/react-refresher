@@ -4,6 +4,7 @@ import { Router, Link } from "@reach/router";
 import SearchParams from "./hooks/SearchParams";
 import Details from "./components/Details";
 import ThemeContext from "./ThemeContext";
+import NavBar from "./hooks/NavBar";
 
 const App = () => {
   const themeHook = useState("purple");
@@ -11,9 +12,7 @@ const App = () => {
     <React.StrictMode>
       <ThemeContext.Provider value={themeHook}>
         <div>
-          <header>
-            <Link to="/">Adopt Me!</Link>
-          </header>
+          <NavBar />
           <Router>
             <SearchParams path="/" />
             <Details path="/details/:id" />
