@@ -1,15 +1,16 @@
 import React, { Component } from "react";
-import Link from "@reach/router";
+import { Link, Redirect } from "@reach/router";
 
-export default class ErrorBoundary extends Component {
+class ErrorBoundary extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       hasError: false,
+      redirect: false,
     };
   }
-  static getDerivedStateFromErrror() {
+  static getDerivedStateFromError(error) {
     return { hasError: true };
   }
 
@@ -17,7 +18,17 @@ export default class ErrorBoundary extends Component {
     console.error("EB caught an error: ", error, info);
   }
 
+  componentDidUpdate() {
+    if (this.state.hasError) {
+      setTimeout(() => this.setState({ redirect: true }), 5000);
+    }
+    this.setState({ redirect: true });
+  }
+
   render() {
+    if (this.state.redirect) {
+      return <Redirect to="/" noThrow />;
+    }
     if (this.state.hasError) {
       return (
         <h1>
@@ -29,3 +40,5 @@ export default class ErrorBoundary extends Component {
     return this.props.children;
   }
 }
+
+export default ErrorBoundary;

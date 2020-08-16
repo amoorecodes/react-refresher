@@ -28,6 +28,7 @@ class Details extends Component {
 
   render() {
     if (this.state.loading) {
+      throw new Error("render error");
       return <h1>Loading...</h1>;
     }
 
@@ -45,8 +46,10 @@ class Details extends Component {
     );
   }
 }
-export default function  DetailsWithErrorBoundary( props) => {
-  return <ErrorBoundary>
-    <Details {...props}/>
-  </ErrorBoundary>
-};
+export default function DetailsErrorBoundary(props) {
+  return (
+    <ErrorBoundary>
+      <Details {...props} />
+    </ErrorBoundary>
+  );
+}
